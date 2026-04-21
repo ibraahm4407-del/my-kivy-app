@@ -25,6 +25,9 @@ jobs:
           pip install buildozer cython
 
       - name: Build APK
+      
+      permissions:
+  contents: read
         run: |
           buildozer android debug
 
