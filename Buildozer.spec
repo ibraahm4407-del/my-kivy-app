@@ -1,3 +1,5 @@
-requirements = python3,kivy,requests
-android.api = 31
-android.minapi = 21
+- name: Debug folder
+  run: |
+    ls
+    cd YOUR_FOLDER_NAME
+    ls
