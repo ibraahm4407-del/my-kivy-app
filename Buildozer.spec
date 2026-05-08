@@ -4,7 +4,7 @@ title = My Kivy App
 package.name = myapp
 package.domain = org.test
 
-source.dir = .
+source.dir = 
 source.include_exts = py,kv,png,jpg
 
 version = 0.1
