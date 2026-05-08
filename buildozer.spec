@@ -6,6 +6,7 @@ package.name = myapp
 package.domain = org.test
 
 source.dir = .
+
 source.include_exts = py,png,jpg,kv
 
 version = 0.1
@@ -18,19 +19,15 @@ fullscreen = 0
 
 android.permissions = INTERNET
 
-# -------------------------
-# Android settings
-# -------------------------
-
+# FIX SDK / BUILD TOOLS
 android.api = 33
 android.minapi = 21
 android.sdk = 33
 android.ndk = 25b
-android.build_tools = 33.0.0
+android.accept_sdk_license = True
 
-# -------------------------
-# Buildozer
-# -------------------------
+# IMPORTANT
+android.skip_update = True
 
 [buildozer]
 
