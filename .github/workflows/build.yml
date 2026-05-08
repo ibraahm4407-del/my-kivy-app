@@ -23,7 +23,7 @@ jobs:
           pip install --upgrade pip
           pip install buildozer cython
 
-      - name: Build APK
+      - name: Build APk
         run: |
           buildozer android debug
 
