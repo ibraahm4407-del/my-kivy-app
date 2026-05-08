@@ -28,9 +28,8 @@ jobs:
           ls
           
       - name: Build APK
-        run: |
-          cd YOUR_FOLDER_NAME
-          buildozer android debug
+  run: |
+    buildozer android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
