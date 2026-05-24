@@ -10,41 +10,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Install system dependencies
         run: |
           sudo apt update
           sudo apt install -y \
-            python3-pip \
-            build-essential \
-            git zip unzip \
-            openjdk-17-jdk \
-            autoconf libtool pkg-config \
-            zlib1g-dev \
-            libncurses5-dev libncursesw5-dev \
-            cmake \
-            libffi-dev \
-            libssl-dev
+            git zip unzip openjdk-17-jdk \
+            python3-pip autoconf libtool pkg-config \
+            zlib1g-dev libncurses5-dev libncursesw5-dev \
+            cmake libffi-dev libssl-dev build-essential
 
       - name: Install Buildozer
         run: |
           pip install --upgrade pip
           pip install buildozer cython python-for-android
 
-      - name: Install Android SDK tools
+      - name: Clean previous builds
         run: |
-          mkdir -p ~/.buildozer/android/platform
-          yes | sdkmanager --licenses || true
-          sdkmanager "platform-tools"
-          sdkmanager "platforms;android-33"
-          sdkmanager "build-tools;33.0.2"
-
-      - name: Clean cache
-        run: |
-          rm -rf ~/.buildozer
           rm -rf .buildozer
+          rm -rf ~/.buildozer
 
       - name: Build APK
         run: |
@@ -53,5 +44,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: apk
+          name: kivy-apk
           path: bin/*.apk
