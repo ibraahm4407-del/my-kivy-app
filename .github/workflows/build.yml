@@ -23,7 +23,8 @@ jobs:
           openjdk-17-jdk \
           autoconf libtool pkg-config \
           zlib1g-dev libncurses5-dev \
-          libncursesw5-dev libtinfo5 cmake \
+          libncursesw5-dev
+           cmake \
           libffi-dev libssl-dev
 
       - name: Install Buildozer
