@@ -16,16 +16,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y \
-          python3-pip \
-          build-essential \
-          git zip unzip \
-          openjdk-17-jdk \
-          autoconf libtool pkg-config \
-          zlib1g-dev libncurses5-dev \
-          libncursesw5-dev
-           cmake \
-          libffi-dev libssl-dev
+          sudo apt install -y python3-pip build-essential git zip unzip openjdk-17-jdk autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev cmake libffi-dev libssl-dev
 
       - name: Install Buildozer
         run: |
@@ -37,10 +28,9 @@ jobs:
           rm -rf ~/.buildozer
           rm -rf .buildozer
 
-      - name: Accept SDK licenses
+      - name: Accept licenses
         run: |
-          mkdir -p ~/.android
-          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" > ~/.android/repositories.cfg || true
+          yes | buildozer android update
 
       - name: Build APK
         run: |
